@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Page for My Love</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #fce4ec, #f8bbd0); /* Light rose gradient background */
+            position: relative;
+        }
+    
+        .heart {
+            cursor: pointer;
+            font-size: 3rem;
+            position: relative;
+            z-index: 2; /* Ensure it is above the hearts */
+        }
+        
+        .picture-container {
+            display: none;
+            position: relative;
+            text-align: center;
+            z-index: 2; /* Ensure it is above the hearts */
+        }
+    
+        .picture-container img {
+            width: 100%;
+            height: auto;
+        }
+    
+        .picture-container .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    
+        .heart-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1; 
+        }
+    
+        .heart-animation {
+            position: absolute;
+            font-size: 2rem;
+            color: #e91e63;
+            animation: moveHeart 10s linear infinite;
+        }
+    
+        @keyframes moveHeart {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            25% {
+                transform: translate(100vw, -100vh);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-100vw, -100vh);
+                opacity: 1;
+            }
+            75% {
+                transform: translate(-100vw, 100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100vw, 100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+    
+    
+</head>
+
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="heart-container">
+    </div>
+<div id="welcome-message" class="text-2xl font-bold mb-4">Welcome to our special page, Ihsane!</div> 
+<div id="welcome-message" class="text-xl font-bold mb-4">Happy girlfriend's day. I love you so much darling!!!</div>   
+    <div id="countdown" class="text-xl mb-4"></div>
+    <div id="heart" class="heart text-red-500 mb-4">Clickhere💝</div>
+    
+    
+    <div class="picture-container" id="pic1">
+        <img src="pic/pic01.png" alt="Picture 1">
+        <div class="message">You mean the world to me.</div>
+    </div>
+    <div class="picture-container" id="pic2">
+        <img src="pic/pic02.png" alt="Picture 2">
+        <div class="message">I adore you.</div>
+    </div>
+    <div class="picture-container" id="pic3">
+        <img src="pic/pic03.png" alt="Picture 3">
+        <div class="message">My heart belongs to you.</div>
+    </div>
+    <div class="picture-container" id="pic4">
+        <img src="pic/pic04.png" alt="Picture 4">
+        <div class="message">You're my everything.</div>
+    </div>
+    <div class="picture-container" id="pic5">
+        <img src="pic/pic05.png" alt="Picture 5">
+        <div class="message">I'm yours forever.</div>
+    </div>
+    <div class="picture-container" id="pic6">
+        <img src="pic/pic06.png" alt="Picture 6">
+        <div class="message">You're the love of my life.</div>
+    </div>
+    <div class="picture-container" id="pic7">
+        <img src="pic/pic07.png" alt="Picture 7">
+        <div class="message">You complete me.</div>
+    </div>
+    <div class="picture-container" id="pic8">
+        <img src="pic/pic08.png" alt="Picture 8">
+        <div class="message">I'm deeply in love with you.</div>
+    </div>
+    <div class="picture-container" id="pic9">
+        <img src="pic/pic09.png" alt="Picture 9">
+        <div class="message">You're my one and only.</div>
+    </div>
+    <div class="picture-container" id="pic10">
+        <img src="pic/pic010.png" alt="Picture 10">
+        <div class="message">You’re my forever and always.</div>
+    </div>
+    <div class="picture-container" id="pic11">
+        <img src="pic/pic011.png" alt="Picture 11">
+        <div class="message">You're my future wife.</div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('accessToken') !== 'valid') {
+                // Redirect to index.html if no valid token
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Clear token once redirected to main.html
+            localStorage.removeItem('accessToken');
+
+            // Your existing code for main.html functionality
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom right, #fce4ec, #f8bbd0); /* Light rose gradient background */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #e91e63;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed; /* Indicate button is not clickable */
+            opacity: 0.5; /* Make button appear disabled */
+        }
+
+        .button.enabled {
+            cursor: pointer; /* Change cursor to pointer when enabled */
+            opacity: 1; /* Make button appear enabled */
+        }
+
+        .countdown {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-4">Our Special Page is Coming Soon!</h1>
+        <div id="countdown" class="countdown"></div>
+        <button id="access-button" class="button">Access Now</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targetDate = new Date('2024-07-19T01:00:00'); // Target date and time
+            const countdownElement = document.getElementById('countdown');
+            const accessButton = document.getElementById('access-button');
+
+            function updateCountdown() {
+                const now = new Date();
+                const diffTime = targetDate - now;
+
+                if (diffTime <= 0) {
+                    // Time has passed, enable the button and link to main.html
+                    accessButton.classList.add('enabled');
+                    accessButton.textContent = 'Access Now';
+                    accessButton.disabled = false; // Make the button clickable
+                    accessButton.addEventListener('click', () => {
+                        localStorage.setItem('accessToken', 'valid'); // Set token in local storage
+                        window.location.href = 'main.html'; // Redirect to main.html
+                    });
+                    return;
+                }
+
+                // Calculate days, hours, minutes, and seconds
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+                const diffSeconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes, ${diffSeconds} seconds until the page is available`;
+
+                setTimeout(updateCountdown, 1000); // Update every second
+            }
+
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
+
